@@ -22,7 +22,8 @@ def configure_selenium():
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-    driver = webdriver.Chrome(service=Service("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"), options=options)
+    service = webdriver.ChromeService()
+    driver = webdriver.Chrome(service=service, options=options)
     return driver
 
 # Função para fazer scraping da página
@@ -38,7 +39,7 @@ def get_proxies():
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     proxies = []
-    for row in soup.find('table', id='proxylisttable').tbody.find_all('tr'):
+    for row in soup.find('table').tbody.find_all('tr'):
         proxies.append({
             'ip': row.find_all('td')[0].text,
             'port': row.find_all('td')[1].text
