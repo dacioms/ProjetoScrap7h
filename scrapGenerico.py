@@ -59,8 +59,21 @@ def fetch_url_with_proxy(url, proxies):
 
 
 # Função principal de scraping
+base_url = "https://www.example.com/jobs"
+
+
 def main_scraping():
     driver = configure_selenium()
-    base_url = "https://www.example.com/jobs"
+    proxies = get_proxies()
+    reponse_text = fetch_url_with_proxy(base_url, proxies)
+    
     soup = scrape_page(base_url, driver)
     jobs = []
+    driver.quit()
+    return jobs
+
+if __name__ == "__main__":
+    jobs = main_scraping()
+    df = pd.DataFrame(jobs)
+    df.to_json("jobs.json", index=False)
+    print("Scraping concluído com sucesso!")
