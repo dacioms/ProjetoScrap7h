@@ -65,8 +65,8 @@ base_url = "https://www.example.com/jobs"
 def main_scraping():
     driver = configure_selenium()
     proxies = get_proxies()
-    reponse_text = fetch_url_with_proxy(base_url, proxies)
-    
+    response_text = fetch_url_with_proxy(base_url, proxies)
+    print("Texto do get proxy: ", response_text)
     soup = scrape_page(base_url, driver)
     jobs = []
     driver.quit()
