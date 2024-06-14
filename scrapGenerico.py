@@ -22,7 +22,7 @@ def configure_selenium():
     options.add_argument("disable-infobars")
     options.add_argument("--disable-extensions")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
-    driver = webdriver.Chrome(service=Service("/path/to/chromedriver"), options=options)
+    driver = webdriver.Chrome(service=Service("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"), options=options)
     return driver
 
 # Função para fazer scraping da página
