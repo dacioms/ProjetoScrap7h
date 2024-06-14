@@ -56,3 +56,11 @@ def fetch_url_with_proxy(url, proxies):
         except:
             continue
     return None
+
+
+# Função principal de scraping
+def main_scraping():
+    driver = configure_selenium()
+    base_url = "https://www.example.com/jobs"
+    soup = scrape_page(base_url, driver)
+    jobs = []
